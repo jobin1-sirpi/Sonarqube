@@ -17,9 +17,11 @@ Animated HTML page from scratch using HTML and CSS only. Simple and easy-to-foll
 
 ## Meta
 
+Tutorial video - [@Youtube](https://youtu.be/06SOVYKeMuY)
+
 Image source - [@pexels](https://www.pexels.com)
 
-Web Xplained – [@youtube](https://www.youtube.com/channel/UC4sWzrFzcFKCoGYj6PaIsDg) - - -
+Web Xplained – [@youtube](https://www.youtube.com/channel/UC4sWzrFzcFKCoGYj6PaIsDg?sub_confirmation=1) - - -
 [@instagram](https://www.instagram.com/web.xplained/)
 
 MIT License
