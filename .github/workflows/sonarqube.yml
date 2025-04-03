@@ -1,4 +1,4 @@
-name: SonarQube Analysis
+name: SonarQube Analysis and Deployment
 
 on:
   push:
@@ -42,4 +42,27 @@ jobs:
             -Dsonar.projectKey=${{ github.repository_owner }}_${{ github.event.repository.name }}
             -Dsonar.projectName=${{ github.repository_owner }}_${{ github.event.repository.name }}
             -Dsonar.sources=.
-            -Dsonar.exclusions=**/*.java
+            -Dsonar.exclusions=**/*.java,node_modules/**,**/*.min.js,**/*.min.css
+            -Dsonar.securityHotspots.enabled=true
+
+  deploy:
+    needs: sonarqube-analysis
+    runs-on: ubuntu-latest
+    # Only deploy on push to main (not on PRs)
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      
+      # Option 1: Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: .  # The folder containing your web app files
+          branch: gh-pages  # The branch to deploy to
+          
+
+      
+      - name: Deployment Status
+        run: echo "Deployment complete!"
